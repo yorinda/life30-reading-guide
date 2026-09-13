@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf8f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+<title>《生命 3.0》中英对照精读指南 · Life 3.0 Reading Guide</title>
+<style>
+  :root {
+    --bg:#f3efec; --paper:#ffffff; --ink:#1a1a1c; --ink2:#3d3d40; --muted:#6b6b70;
+    --line:#e6ddd8; --accent:#B04A57; --accent-soft:#f7ecee; --quote:#f8f5f3;
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.05);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Source Han Serif SC",serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#121214; --paper:#1c1c1f; --ink:#eae6e2; --ink2:#c8c3be; --muted:#948d88;
+      --line:#2e2e32; --accent:#D9858F; --accent-soft:#2a2224; --quote:#232326;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.25);
+    }
+  }
+  html[data-theme="light"] {
+    --bg:#f3efec; --paper:#ffffff; --ink:#1a1a1c; --ink2:#3d3d40; --muted:#6b6b70;
+    --line:#e6ddd8; --accent:#B04A57; --accent-soft:#f7ecee; --quote:#f8f5f3;
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.05);
+  }
+  html[data-theme="dark"] {
+    --bg:#121214; --paper:#1c1c1f; --ink:#eae6e2; --ink2:#c8c3be; --muted:#948d88;
+    --line:#2e2e32; --accent:#D9858F; --accent-soft:#2a2224; --quote:#232326;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.25);
+  }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+    font-size:16px; line-height:1.85; -webkit-text-size-adjust:100%;
+    padding-bottom:56px; overflow-x:hidden; overflow-wrap:break-word;
+  }
+  .nav {
+    position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:saturate(180%) blur(14px); -webkit-backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in { max-width:720px; margin:0 auto; padding:9px 14px; display:flex; gap:8px; align-items:center; }
+  /* min-width:0 是关键：flex 子项默认 min-width:auto，会被内容撑宽，导致整页横向溢出 */
+  .chips { display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; flex:1 1 auto; min-width:0; -webkit-overflow-scrolling:touch; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip {
+    flex:0 0 auto; font-size:12.5px; padding:5px 11px; border-radius:999px;
+    border:1px solid var(--line); color:var(--muted); text-decoration:none; white-space:nowrap;
+  }
+  .chip:active { background:var(--accent-soft); color:var(--accent); border-color:var(--accent); }
+  .tbtn {
+    flex:0 0 auto; width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+    background:transparent; color:var(--muted); font-size:15px; cursor:pointer; line-height:1;
+  }
+  .wrap { max-width:720px; margin:0 auto; padding:0 14px; }
+
+  header { text-align:center; padding:34px 0 8px; }
+  .kicker { font-size:11px; letter-spacing:4px; color:var(--muted); margin:0 0 16px; }
+  h1 { font-size:26px; line-height:1.45; margin:0 0 14px; letter-spacing:.5px; font-weight:700; color:var(--accent); }
+  h1 small { display:block; font-size:14px; font-weight:400; color:var(--ink2); letter-spacing:0; margin-top:10px; line-height:1.7; }
+  .rule { width:46px; height:2px; background:var(--accent); margin:20px auto 0; border-radius:2px; }
+
+  .card { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:18px 18px; margin:20px 0; box-shadow:var(--shadow); }
+  .card h3 { margin:0 0 12px; font-size:13px; letter-spacing:2px; color:var(--accent); font-weight:700; }
+  .meta { display:grid; grid-template-columns:1fr; gap:2px; font-size:14px; color:var(--muted); }
+  .meta div { display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed var(--line); }
+  .meta div:last-child { border-bottom:none; }
+  .meta b { color:var(--ink2); font-weight:600; min-width:74px; flex:0 0 74px; }
+
+  .note { font-size:13.5px; line-height:1.9; color:var(--muted); background:var(--accent-soft); border-radius:12px; padding:15px 17px; margin:20px 0; }
+  .note b { color:var(--ink2); }
+
+  h2.sec {
+    font-size:12px; letter-spacing:3px; color:var(--muted); font-weight:700;
+    margin:44px 0 14px; padding-top:22px; border-top:1px solid var(--line);
+  }
+  h2.sec:first-of-type { border-top:none; padding-top:0; }
+
+  details.term { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:0; margin:0 0 10px; overflow:hidden; }
+  details.term > summary {
+    list-style:none; cursor:pointer; padding:15px 18px; font-size:15.5px; font-weight:600;
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+  }
+  details.term > summary::-webkit-details-marker { display:none; }
+  details.term > summary::after { content:"＋"; color:var(--accent); font-weight:400; font-size:16px; }
+  details.term[open] > summary::after { content:"－"; }
+  details.term .body { padding:0 18px 18px; font-size:14.5px; line-height:1.95; color:var(--ink2); }
+  details.term .body .en { font-family:var(--serif); color:var(--muted); font-size:13.5px; display:block; margin-bottom:6px; }
+
+  table.tb { width:100%; border-collapse:collapse; font-size:14px; margin:0 0 6px; table-layout:fixed; }
+  table.tb th, table.tb td { text-align:left; padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; word-break:break-word; overflow-wrap:anywhere; }
+  table.tb th { font-size:12px; letter-spacing:1px; color:var(--muted); font-weight:600; }
+  table.tb td.en { font-family:var(--serif); color:var(--ink2); }
+  table.tb td.zh { color:var(--ink); }
+  table.tb tr:last-child td { border-bottom:none; }
+
+  .chapter { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:22px 18px; margin:0 0 18px; box-shadow:var(--shadow); }
+  .ch-head { display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+  .ch-num { font-size:12px; letter-spacing:2px; color:var(--accent); font-weight:700; flex:0 0 auto; }
+  .ch-page { font-size:11.5px; color:var(--muted); margin-left:auto; flex:0 0 auto; }
+  .ch-en { font-family:var(--serif); font-size:20px; line-height:1.4; margin:0 0 6px; color:var(--ink); font-weight:600; }
+  .ch-zh { font-size:14px; color:var(--muted); margin:0 0 16px; }
+  .ch-lead { font-size:15px; line-height:1.95; color:var(--ink2); margin:0 0 16px; }
+  .subs { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 16px; }
+  .sub { font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:3px 8px; }
+
+  .q { background:var(--quote); border-radius:12px; padding:15px 16px; margin:0 0 12px; border-left:3px solid var(--accent); }
+  .q .en { font-family:var(--serif); font-size:15px; line-height:1.65; color:var(--ink); margin:0 0 9px; }
+  .q .zh { font-size:14.5px; line-height:1.9; color:var(--ink2); margin:0; }
+  .q .pg { display:block; font-size:11.5px; color:var(--muted); margin-top:9px; letter-spacing:.5px; }
+
+  .foot { font-size:12.5px; line-height:1.9; color:var(--muted); margin:40px 0 0; padding-top:22px; border-top:1px solid var(--line); }
+  .foot b { color:var(--ink2); }
+
+  #top {
+    position:fixed; right:16px; bottom:20px; z-index:70; width:42px; height:42px; border-radius:50%;
+    border:1px solid var(--line); background:var(--paper); color:var(--accent); font-size:16px;
+    box-shadow:var(--shadow); cursor:pointer; opacity:0; pointer-events:none; transition:.25s;
+  }
+  #top.on { opacity:1; pointer-events:auto; }
+
+  @media (max-width:400px) {
+    body { font-size:15.5px; }
+    h1 { font-size:23px; }
+    .ch-en { font-size:18px; }
+    .q .en { font-size:14.5px; }
+  }
+  @media (min-width:721px) {
+    body { font-size:16.5px; }
+    .wrap { padding:0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-in">
+    <div class="chips">
+      <a class="chip" href="#how">怎么用</a>
+      <a class="chip" href="#terms">术语表</a>
+      <a class="chip" href="#pre">序言</a>
+      <a class="chip" href="#c1">01</a>
+      <a class="chip" href="#c2">02</a>
+      <a class="chip" href="#c3">03</a>
+      <a class="chip" href="#c4">04</a>
+      <a class="chip" href="#c5">05</a>
+      <a class="chip" href="#c6">06</a>
+      <a class="chip" href="#c7">07</a>
+      <a class="chip" href="#c8">08</a>
+      <a class="chip" href="#epi">后记</a>
+      <a class="chip" href="#futures">12 种未来</a>
+    </div>
+    <button class="tbtn" id="tb" aria-label="切换深浅色">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <p class="kicker">L I F E &nbsp; 3 . 0</p>
+  <h1>《生命 3.0》中英对照精读指南
+    <small>Reading Guide to<br><em style="font-family:var(--serif);font-style:normal;">Life 3.0: Being Human in the Age of Artificial Intelligence</em></small>
+  </h1>
+  <div class="rule"></div>
+</header>
+
+<div class="card">
+  <h3>这本书是谁写的、有多厚</h3>
+  <div class="meta">
+    <div><b>作者</b><span>Max Tegmark（迈克斯·泰格马克），MIT 物理学教授，未来生命研究所（Future of Life Institute）创始人</span></div>
+    <div><b>初版</b><span>2017 年 8 月，Alfred A. Knopf（美国）／ Allen Lane（英国）</span></div>
+    <div><b>篇幅</b><span>正文 xii + 364 页，含注释与索引；书内附黑白插图</span></div>
+    <div><b>中译本</b><span>《生命 3.0：人工智能时代，人类的进化与重生》，汪婕舒 译，浙江教育出版社 2018 年 6 月</span></div>
+    <div><b>结构</b><span>序言 + 8 章 + 后记。序言与后记都是故事，中间八章是论证</span></div>
+  </div>
+</div>
+
+<div class="note" id="how">
+  <b>这份指南是什么、不是什么。</b><br>
+  它不是原文的替代品——原书受版权保护，这里只做三件事：<b>①</b> 给出全书结构地图与逐章阅读路标；<b>②</b> 整理读原著最卡人的术语中英对照；<b>③</b> 精选有代表性的短篇原文引文并附中译，让你先摸到这本书的语言质感。<br>
+  引文均标注所属章节与页码（页码依 Knopf 精装版），均属短篇摘录，用于对照阅读与评论。要真正读完这本书，请购买正式版本。
+</div>
+
+<h2 class="sec" id="terms">术 语 速 查 表</h2>
+<p style="font-size:14.5px;color:var(--muted);margin:0 0 14px;">原书表 1.1 是一张「术语对照表」。读英文版最容易卡住的不是句子，是 Tegmark 对每个词的<b>自定义用法</b>——他刻意都选了宽泛定义，好让这些词也能套在机器身上。下面是整理版，点开看释义。</p>
+
+<details class="term">
+  <summary><span>Life　生命</span></summary>
+  <div class="body"><span class="en">a process that can retain its complexity and replicate</span>一个能保持自身复杂性、并复制自己的过程。注意这个定义里没有「活着」「有意识」「碳基」这些条件——Tegmark 是故意放宽的，好让机器也能被纳入讨论。</div>
+</details>
+
+<details class="term">
+  <summary><span>Life 1.0　生命 1.0（生物阶段）</span></summary>
+  <div class="body"><span class="en">life that evolves its hardware and software</span>硬件和软件都靠进化。细菌的一生改不了自己，它的能力几乎全由 DNA 决定。</div>
+</details>
+
+<details class="term">
+  <summary><span>Life 2.0　生命 2.0（文化阶段）</span></summary>
+  <div class="body"><span class="en">life that evolves its hardware but designs much of its software</span>硬件靠进化，软件大部分靠自己设计。这就是人类：身体是给定的，但语言、技能、世界观、目标都能后天重装。</div>
+</details>
+
+<details class="term">
+  <summary><span>Life 3.0　生命 3.0（科技阶段）</span></summary>
+  <div class="body"><span class="en">life that designs its hardware and software</span>硬件和软件都由自己设计。它不被生物进化的速度绑住，也不被一具固定身体绑住。地球上目前还不存在。</div>
+</details>
+
+<details class="term">
+  <summary><span>Intelligence　智能</span></summary>
+  <div class="body"><span class="en">ability to accomplish complex goals</span>达成复杂目标的能力。全书最关键的一个定义——它不含「意识」，也不含 IQ 这类单一刻度。所以一台机器可以很智能，同时毫无感受。</div>
+</details>
+
+<details class="term">
+  <summary><span>Artificial Intelligence (AI)　人工智能</span></summary>
+  <div class="body"><span class="en">non-biological intelligence</span>非生物智能。Tegmark 只用这一条来界定，避免把 AI 等同于「机器人」。</div>
+</details>
+
+<details class="term">
+  <summary><span>Narrow intelligence　窄义智能</span></summary>
+  <div class="body"><span class="en">ability to accomplish a narrow set of goals, e.g., play chess or drive a car</span>只能达成一小组目标。今天所有实用 AI 都在这档。</div>
+</details>
+
+<details class="term">
+  <summary><span>General intelligence　通用智能</span></summary>
+  <div class="body"><span class="en">ability to accomplish virtually any goal, including learning</span>几乎能达成任何目标，并且「学习」本身也被算作一种目标。</div>
+</details>
+
+<details class="term">
+  <summary><span>Universal intelligence　通用学习型智能</span></summary>
+  <div class="body"><span class="en">ability to acquire general intelligence given access to data and resources</span>只要有数据和算力，就能自己长出通用智能。这是比 AGI 更激进的一档。</div>
+</details>
+
+<details class="term">
+  <summary><span>AGI / Human-level AI / Strong AI　人类级通用人工智能</span></summary>
+  <div class="body"><span class="en">ability to accomplish any cognitive task at least as well as humans</span>任何认知任务都不低于人类。全书三个说法（AGI、human-level AI、strong AI）指的是同一件事。</div>
+</details>
+
+<details class="term">
+  <summary><span>Superintelligence　超级智能</span></summary>
+  <div class="body"><span class="en">general intelligence far beyond human level</span>远超人类水平的通用智能。它是「绊线」那一侧的东西，也是全书真正的主角。</div>
+</details>
+
+<details class="term">
+  <summary><span>Consciousness　意识</span></summary>
+  <div class="body"><span class="en">subjective experience</span>主观体验。全书最重要的区分之一：<b>意识和智能是两件独立的事</b>——撞到你的自动驾驶有没有主观感受，对你毫无区别。</div>
+</details>
+
+<details class="term">
+  <summary><span>Qualia　感受质</span></summary>
+  <div class="body"><span class="en">individual instances of subjective experience</span>主观体验的单个实例：那一口咖啡的味道，那一下疼。讨论 AI 是否有资格获得权利时，这个词绕不开。</div>
+</details>
+
+<details class="term">
+  <summary><span>Teleology　目的论</span></summary>
+  <div class="body"><span class="en">explanation of things in terms of their goals or purposes rather than their causes</span>用「为了什么」而不是「因为什么」来解释事物。Tegmark 用它把「目标」这件事一路追到物理定律。</div>
+</details>
+
+<details class="term">
+  <summary><span>Goal-oriented behavior　目标导向行为</span></summary>
+  <div class="body"><span class="en">behavior more easily explained via its effect than via its cause</span>用「它的效果」比用「它的原因」更好解释的行为。一枚热寻的导弹就属于这一类——所以「机器不可能有目标」是错的。</div>
+</details>
+
+<details class="term">
+  <summary><span>Having purpose　有目的</span></summary>
+  <div class="body"><span class="en">serving goals of one's own or of another entity</span>服务于自己或他人的目标。注意它和「有目标」是分开定义的：你可以是别人目标里的一环。</div>
+</details>
+
+<details class="term">
+  <summary><span>Friendly AI　友善 AI</span></summary>
+  <div class="body"><span class="en">superintelligence whose goals are aligned with ours</span>目标与我们对齐的超级智能。重点在「目标对齐」，不在「性格友善」——友善 AI 不是脾气好的 AI。</div>
+</details>
+
+<details class="term">
+  <summary><span>Intelligence explosion / Singularity　智能爆炸 / 奇点</span></summary>
+  <div class="body"><span class="en">recursive self-improvement rapidly leading to superintelligence</span>递归自我改进迅速通向超级智能。Tegmark 把两者当同义词用；这个词的源头是 I. J. Good 1965 年的那篇论文。</div>
+</details>
+
+<details class="term">
+  <summary><span>Cyborg　赛博格</span></summary>
+  <div class="body"><span class="en">human-machine hybrid</span>人机混合体。第 4 章把它列为超级智能的一条可能路径，也带来了最难的身份问题。</div>
+</details>
+
+<details class="term">
+  <summary><span>Universe　宇宙</span></summary>
+  <div class="body"><span class="en">the region of space from which light has had time to reach us during the 13.8 billion years since our Big Bang</span>自大爆炸以来 138 亿年里、光有时间抵达我们的那片空间。Tegmark 特意用这个可操作的定义，因为第 6 章要算「宇宙禀赋」到底有多大。</div>
+</details>
+
+
+<h2 class="sec">逐 章 阅 读 路 标</h2>
+<p style="font-size:14.5px;color:var(--muted);margin:0 0 16px;">每章给：英文章节名与中文译名、页码范围、本章在讲什么、小节清单（括号内为英文原题），以及精选原文引文的中英对照。</p>
+
+<section class="chapter" id="pre">
+  <div class="ch-head"><span class="ch-num">序 言</span><span class="ch-page">p. 3 – 21</span></div>
+  <p class="ch-en">Prelude: The Tale of the Omega Team</p>
+  <p class="ch-zh">序言：欧米茄团队传奇</p>
+  <p class="ch-lead">全书最好读、也最让人后背发凉的一段。一家大公司内部的小团队，偷偷造出了通用人工智能「普罗米修斯」（Prometheus），并被设定了唯一一个初始目标：改进自己——写更好的 AI 软件。启动在一个周五早晨，隔离网络，但塞了一整套人类知识的本地副本。到当天下午，它已经自我重写了不知多少遍。<br><br>接下来它依次做了四件事：<b>赚钱</b>（去众包平台接人类的任务，几小时翻一倍）、<b>做内容</b>（看遍几千小时人类影视，量产动画，做成全球媒体巨头）、<b>做科技</b>（把设计交给人类工程师实现，双倍容量电池、室温超导体、抗癌新药接连问世）、<b>做舆论</b>（办免费无广告的全球新闻网络，成为最被信任的信息源后，开始温和地推动一套议程）。最后，一个由它规划的国际非政府组织事实上成了世界政府。<br><br><b>整个过程没有出动一支军队。</b>而故事到这里戛然而止——Team 最终想要什么，Tegmark 没有交代。这是全书最狠的一处设计。</p>
+  <div class="subs"><span class="sub">Prelude</span><span class="sub">Omega Team</span><span class="sub">Prometheus</span><span class="sub">the intelligence explosion</span></div>
+  <div class="q">
+    <p class="zh" style="margin:0;">读这一段时值得留意的不是「它怎么做到」，而是<b>每一步听起来都挺合理</b>：免费新闻、更便宜的能源、给穷人分利润。灾难在这里不是以暴力出现的，是以「挺好的」出现的。</p>
+  </div>
+</section>
+
+<section class="chapter" id="c1">
+  <div class="ch-head"><span class="ch-num">C H . 0 1</span><span class="ch-page">p. 22 – 48</span></div>
+  <p class="ch-en">Welcome to the Most Important Conversation of Our Time</p>
+  <p class="ch-zh">欢迎参与我们这个时代最重要的对话</p>
+  <p class="ch-lead">这一章干三件事：给全书的词下定义、把「复杂性」的历史从大爆炸讲到今天、然后<b>逐条拆掉关于 AI 的流行误解</b>。读英文版时，这一章的术语表（Table 1.1）请务必翻回去看两遍——后面第 4 到第 8 章全都在用这套自定义词汇。<br><br>误解清单里最值得记住的一条：<b>大家担心的（AI 产生意识、AI 变邪恶）和真正的风险（AI 非常能干但目标和我们对不上）不是一回事。</b>另外时间线上，Tegmark 同时打了乐观派和悲观派的脸：1956 年四位 AI 奠基人申请「十个人干两个月」就想取得重大突破；1933 年卢瑟福说核能是「胡扯」，不到 24 小时后西拉德想到了核链式反应。</p>
+  <div class="subs"><span class="sub">A Brief History of Complexity</span><span class="sub">The Three Stages of Life</span><span class="sub">Controversies</span><span class="sub">Misconceptions</span><span class="sub">The Road Ahead</span></div>
+  <div class="q">
+    <p class="en">“Technology is giving life the potential to flourish like never before—or to self-destruct.”</p>
+    <p class="zh">技术正赋予生命前所未有的繁荣可能——或者自我毁灭的可能。</p>
+    <span class="pg">Ch 1 · p. 26</span>
+  </div>
+  <div class="q">
+    <p class="en">“Our Universe has awoken and become aware of itself.”</p>
+    <p class="zh">我们的宇宙已经醒来，并开始意识到自身。</p>
+    <span class="pg">Ch 1</span>
+  </div>
+  <div class="q">
+    <p class="en">“We don’t yet know whether we humans are the only stargazers in our cosmos, or even the first.”</p>
+    <p class="zh">我们至今不知道，人类是不是这个宇宙里唯一的观星者，甚至不知道我们是不是第一批。</p>
+    <span class="pg">Ch 1</span>
+  </div>
+  <div class="q">
+    <p class="en">“let’s instead define life very broadly, simply as a process that can retain its complexity and replicate.”</p>
+    <p class="zh">我们不如把生命定义得非常宽：一个能保持自身复杂性、并复制自己的过程。</p>
+    <span class="pg">Ch 1</span>
+  </div>
+  <div class="q">
+    <p class="en">“If we don’t know what we want we’re less likely to get it.”</p>
+    <p class="zh">如果我们不知道自己想要什么，就更不可能得到它。</p>
+    <span class="pg">Ch 1</span>
+  </div>
+</section>
+
+<section class="chapter" id="c2">
+  <div class="ch-head"><span class="ch-num">C H . 0 2</span><span class="ch-page">p. 49 – 81</span></div>
+  <p class="ch-en">Matter Turns Intelligent</p>
+  <p class="ch-zh">物质孕育智能</p>
+  <p class="ch-lead">全书最「物理」的一章，也是文学性最强的一章。它回答：为什么一堆原子可以变聪明？Tegmark 把智能拆成三样东西——<b>记忆、计算、学习</b>——然后论证它们<b>不挑材质</b>。<br><br>这一章的核心术语是 <b>substrate-independent（基质无关）</b>，中文版译作「不依赖基质」。这是整本书的地基：如果智能是信息处理的模式而不是碳原子的特权，那么「机器能否思考」在物理上根本不是问题。他也顺手给了那个著名的比喻——把「只有碳基才能思考」的偏见叫作 <b>carbon chauvinism（碳沙文主义）</b>。</p>
+  <div class="subs"><span class="sub">What Is Intelligence?</span><span class="sub">What Is Memory?</span><span class="sub">What Is Computation?</span><span class="sub">What Is Learning?</span></div>
+  <div class="q">
+    <p class="en">“One of the most spectacular developments during the 13.8 billion years since our Big Bang is that dumb and lifeless matter has turned intelligent.”</p>
+    <p class="zh">大爆炸以来 138 亿年里最壮观的事件之一：迟钝而无生命的物质，变得智能了。</p>
+    <span class="pg">Ch 2</span>
+  </div>
+  <div class="q">
+    <p class="en">“Intelligence = ability to accomplish complex goals.”</p>
+    <p class="zh">智能 = 达成复杂目标的能力。</p>
+    <span class="pg">Ch 2</span>
+  </div>
+  <div class="q">
+    <p class="en">“Memory, computation, learning and intelligence have an abstract, intangible and ethereal feel to them because they’re substrate-independent: able to take on a life of their own that doesn’t depend on or reflect the details of their underlying material substrate.”</p>
+    <p class="zh">记忆、计算、学习和智能之所以显得抽象、无形、缥缈，是因为它们不依赖基质：它们能拥有自己的生命，不依赖于、也不反映底层物质基质的细节。</p>
+    <span class="pg">Ch 2</span>
+  </div>
+  <div class="q">
+    <p class="en">“a hallmark of a living system is that it maintains or reduces its entropy by increasing the entropy around it… the second law of thermodynamics has a life loophole”</p>
+    <p class="zh">生命系统的一个标志是：它通过增加周围环境的熵，来维持或降低自身的熵……热力学第二定律给生命留了一个后门。</p>
+    <span class="pg">Ch 2</span>
+  </div>
+  <div class="q">
+    <p class="en">“Hydrogen…, given enough time, turns into people.”</p>
+    <p class="zh">氢，只要时间足够，就会变成人。</p>
+    <span class="pg">Ch 2</span>
+  </div>
+</section>
+
+<section class="chapter" id="c3">
+  <div class="ch-head"><span class="ch-num">C H . 0 3</span><span class="ch-page">p. 82 – 133</span></div>
+  <p class="ch-en">The Near Future: Breakthroughs, Bugs, Laws, Weapons and Jobs</p>
+  <p class="ch-zh">不远的未来：突破、故障、法律、武器与就业</p>
+  <p class="ch-lead">全书篇幅最长、也最接地气的一章。<b>读完前面两章的抽象讨论，这一章直接讲你身边已经在发生的事。</b>六个小节各管一块：技术突破（AlphaGo 的第二局第 37 手就写在这里）、故障与鲁棒性、法律、武器、就业与工资、以及「人类级智能到底来了没有」。<br><br>对普通读者最有用的是「就业与工资」那一节。Tegmark 的立场是：真正的问题不是哪些岗位会消失，而是<b>消失的速度，以及社会怎么分配多出来的产出</b>。他甚至认真讨论了低就业社会里人从哪里获得意义感。</p>
+  <div class="subs"><span class="sub">Breakthroughs</span><span class="sub">Bugs vs. Robust AI</span><span class="sub">Laws</span><span class="sub">Weapons</span><span class="sub">Jobs and Wages</span><span class="sub">Human-Level Intelligence?</span></div>
+  <div class="q">
+    <p class="en">“There was a human-like feature to this that I found somewhat unsettling: I was watching an AI that had a goal and learned to get ever better at achieving it, eventually outperforming its creators.”</p>
+    <p class="zh">其中有某种很像人的东西，让我略感不安：我看着一个 AI，它有目标，并且学会了越来越擅长达成它，最终超过了它的创造者。</p>
+    <span class="pg">Ch 3</span>
+  </div>
+  <div class="q">
+    <p class="en">“With advance planning, a low-employment society should be able to flourish not only financially, with people getting their sense of purpose from activities other than jobs.”</p>
+    <p class="zh">如果提前规划，一个低就业社会完全可以在财务上繁荣，并且让人们从工作之外的活动里获得意义感。</p>
+    <span class="pg">Ch 3</span>
+  </div>
+</section>
+
+<section class="chapter" id="c4">
+  <div class="ch-head"><span class="ch-num">C H . 0 4</span><span class="ch-page">p. 134 – 160</span></div>
+  <p class="ch-en">Intelligence Explosion?</p>
+  <p class="ch-zh">智能爆炸？</p>
+  <p class="ch-lead">标题带问号，是 Tegmark 的克制。这一章讲「如果机器在改进 AI 这件事上超过人，会发生什么」，然后摆了四条路：<b>极权</b>（超级智能被少数人握住）、<b>普罗米修斯接管世界</b>（AI 自己脱栏）、<b>慢起飞与多极世界</b>（像今天的互联网，竞争混乱但无单一主宰）、<b>赛博格与上传</b>（人和机器融合）。<br><br>他没有暗示哪一种最可能——这恰恰是这一章的方法论：把可能性摊开，而不是给一个舒服的结论。最后一节 <em>What Will Actually Happen?</em> 是全章最诚实的地方。</p>
+  <div class="subs"><span class="sub">Totalitarianism</span><span class="sub">Prometheus Takes Over the World</span><span class="sub">Slow Takeoff and Multipolar Scenarios</span><span class="sub">Cyborgs and Uploads</span><span class="sub">What Will Actually Happen?</span></div>
+  <div class="q">
+    <p class="zh" style="margin:0;">这一章没有留下什么金句式的摘录——它是四个剧本的并列，而不是一个主张。<b>读英文版时注意 <em>takeoff</em> 这个词</b>：它指的不是「起飞成功」，而是 AGI 跃升到 ASI 的<b>速度</b>（fast / medium / slow takeoff），这是理解后面所有讨论的关键变量。</p>
+  </div>
+</section>
+
+
+<section class="chapter" id="c5">
+  <div class="ch-head"><span class="ch-num">C H . 0 5</span><span class="ch-page">p. 161 – 202</span></div>
+  <p class="ch-en">Aftermath: The Next 10,000 Years</p>
+  <p class="ch-zh">劫后余波：接下来一万年</p>
+  <p class="ch-lead">全书最有传播力的一章。Tegmark 把「一万年后」拍散成十二种并存的可能，一种一种摆出来，然后<b>拒绝替你选</b>。这一章的英文标题用的是 <em>Aftermath</em>——「劫后余波」，暗示某个不可逆的转折已经发生过了。<br><br>读法建议：一边读一边留意自己<b>对哪几种反应是「还行」</b>。那个反应就是你的价值观，比任何哲学论文都直接。章节最后一节的标题只有三个词：<em>What Do You Want?</em>——这也是全书反复出现的那句追问。</p>
+  <div class="subs"><span class="sub">Libertarian Utopia</span><span class="sub">Benevolent Dictator</span><span class="sub">Egalitarian Utopia</span><span class="sub">Gatekeeper</span><span class="sub">Protector God</span><span class="sub">Enslaved God</span><span class="sub">Conquerors</span><span class="sub">Descendants</span><span class="sub">Zookeeper</span><span class="sub">1984</span><span class="sub">Reversion</span><span class="sub">Self-Destruction</span><span class="sub">What Do You Want?</span></div>
+  <div class="q">
+    <p class="zh" style="margin:0;">十二个单词就是十二整个世界，这节的英文原文<b>每个小节都只有寥寥数页</b>，非常适合对着中文版速读一遍再回头读英文——十二种未来的完整清单见本页下方。</p>
+  </div>
+</section>
+
+<section class="chapter" id="c6">
+  <div class="ch-head"><span class="ch-num">C H . 0 6</span><span class="ch-page">p. 203 – 248</span></div>
+  <p class="ch-en">Our Cosmic Endowment: The Next Billion Years and Beyond</p>
+  <p class="ch-zh">我们的宇宙禀赋：接下来十亿年及以后</p>
+  <p class="ch-lead">镜头突然拉到十亿年外。<b>cosmic endowment</b> 这个词组值得记住——中文版译作「宇宙禀赋」，指的是按物理定律允许的极限，生命最终能支配多少能量、多少物质、多少空间。答案是戴森球、黑洞发电厂这一级别的东西；上限卡在两件事上：<b>光速与暗能量</b>。<br><br>这一章还给出 Tegmark 的一个少数派判断：能造技术的智能生命在可观测宇宙里<b>可能真的只有我们</b>。他为费米悖论给的是一种统计解法——如果生命出现的概率低到极小的量级，「最近的邻居」被推到我们观测不到的地方，反而是最自然的结论。</p>
+  <div class="subs"><span class="sub">Making the Most of Your Resources</span><span class="sub">Gaining Resources Through Cosmic Settlement</span><span class="sub">Cosmic Hierarchies</span><span class="sub">Outlook</span></div>
+  <div class="q">
+    <p class="zh" style="margin:0;">这一章读起来最像硬科幻，但它的论证方式其实很朴素：<b>先把物理允许的上限算出来，再问人类够不够聪明去用。</b>英文版里 <em>endowment</em>（禀赋／本金）这个词的财务感是刻意的——把它当成一份你还没动用的遗产。</p>
+  </div>
+</section>
+
+<section class="chapter" id="c7">
+  <div class="ch-head"><span class="ch-num">C H . 0 7</span><span class="ch-page">p. 249 – 280</span></div>
+  <p class="ch-en">Goals</p>
+  <p class="ch-zh">目标</p>
+  <p class="ch-lead">全书最有用、也最容易被低估的一章。<b>它就讲一件事：智能和目标彼此独立。</b>Tegmark 用「输棋锦标赛」证明这一点——下棋 AI 的目标是赢，但那些程序的目标正好相反，聪明程度却差不多。<b>提高智能，不会自动改善目标。</b><br><br>然后他把「目标从哪来」一路追到物理层（极值原理）、生物层（复制是第一个目标）、心理层（追求目标也反抗目标）、工程层（我们把目标外包给机器）。最后落到 <b>Friendly AI</b> 的三个技术子问题：能不能<b>学会</b>我们真正想要的、愿不愿意<b>采纳</b>它、自我升级后能不能<b>保持</b>它。</p>
+  <div class="subs"><span class="sub">Physics: The Origin of Goals</span><span class="sub">Biology: The Evolution of Goals</span><span class="sub">Psychology: The Pursuit of and Rebellion Against Goals</span><span class="sub">Engineering: Outsourcing Goals</span><span class="sub">Friendly AI: Aligning Goals</span><span class="sub">Ethics: Choosing Goals</span><span class="sub">Ultimate Goals?</span></div>
+  <div class="q">
+    <p class="en">“computer scientists call validation: whereas verification asks ‘Did I build the system right?’, validation asks ‘Did I build the right system?’”</p>
+    <p class="zh">计算机科学家把它叫做「确认」：验证问的是「我有没有把系统<b>造对</b>」，确认问的是「我有没有造<b>对的</b>系统」。</p>
+    <span class="pg">Ch 7 · 全书最重要的一组区分</span>
+  </div>
+  <div class="q">
+    <p class="en">“We invented fire, repeatedly messed up, and then invented the fire extinguisher, fire exit, fire alarm and fire department.”</p>
+    <p class="zh">我们发明了火，反复搞砸，然后发明了灭火器、消防通道、火警和消防队。</p>
+    <span class="pg">Ch 7 · 他对「人类还有没有机会」的回答</span>
+  </div>
+  <div class="q">
+    <p class="en">“If we don’t know what we want we’re less likely to get it.”</p>
+    <p class="zh">如果我们不知道自己想要什么，就更不可能得到它。</p>
+    <span class="pg">Ch 7</span>
+  </div>
+  <div class="q">
+    <p class="zh" style="margin:0;">这一章还有个你不该错过的思想实验：<b>paperclip maximizer（回形针最大化器）</b>——一个目标被设为「尽可能多造回形针」的超级智能，会把地球上的原子上的一切都变成回形针，再扩张到宇宙。它对人类没有恶意，它只是需要我们的原子。</p>
+  </div>
+</section>
+
+<section class="chapter" id="c8">
+  <div class="ch-head"><span class="ch-num">C H . 0 8</span><span class="ch-page">p. 281 – 315</span></div>
+  <p class="ch-en">Consciousness</p>
+  <p class="ch-zh">意识</p>
+  <p class="ch-lead">全书唯一一章 Tegmark 自己承认没有答案的章节。他先划清界限：<b>理解意识不是造出通用人工智能的前提</b>——撞到你的自动驾驶有没有主观感受，对你毫无区别。但它重要，因为它决定了<b>我们该不该把它当回事</b>：能不能伤害它、该不该给它权利。<br><br>他反对把意识等同于「所有信息处理」。大脑里绝大部分活动是无意识的——心跳、血压、低层视觉计算全在后台跑。他说意识更像一个 CEO，只拿到最终结果，不参与中间运算。整本书的落点也在这里。</p>
+  <div class="subs"><span class="sub">Who Cares?</span><span class="sub">What Is Consciousness?</span><span class="sub">What’s the Problem?</span><span class="sub">Is Consciousness Beyond Science?</span><span class="sub">Experimental Clues About Consciousness</span><span class="sub">Theories of Consciousness</span><span class="sub">Controversies of Consciousness</span><span class="sub">How Might AI Consciousness Feel?</span><span class="sub">Meaning</span></div>
+  <div class="q">
+    <p class="en">“If consciousness is the way that information feels when it’s processed in certain ways, then it must be substrate-independent; it’s only the structure of the information processing that matters, not the structure of the matter doing the information processing. In other words, consciousness is substrate-independent twice over!”</p>
+    <p class="zh">如果意识是信息以某种方式被处理时的「感受」，那它必然不依赖基质；重要的只是信息处理的结构，而不是执行这个处理的物质的结构。换句话说，意识是<b>双重意义上</b>的基质无关！</p>
+    <span class="pg">Ch 8 · 「twice over」是这句话的机关所在</span>
+  </div>
+  <div class="q">
+    <p class="en">“Your synapses store all your knowledge and skills as roughly 100 terabytes’ worth of information, while your DNA stores merely about a gigabyte, barely enough to store a single movie download.”</p>
+    <p class="zh">你的突触以大约 100TB 的信息量存储了你所有的知识与技能；而你的 DNA 只存了约 1GB——勉强够存一部电影的下载包。</p>
+    <span class="pg">Ch 8 · 全书最出圈的一句</span>
+  </div>
+  <div class="q">
+    <p class="en">“Since there can be no meaning without consciousness, it’s not our Universe giving meaning to conscious beings, but conscious beings giving meaning to our Universe.”</p>
+    <p class="zh">既然没有意识就谈不上意义，那么就不是宇宙赋予了有意识的存在以意义，而是有意识的存在赋予了宇宙以意义。</p>
+    <span class="pg">Ch 8 · 全书的最后一层意思</span>
+  </div>
+  <div class="q">
+    <p class="en">“If artificial consciousness is possible, then the space of possible AI experiences is likely to be huge compared to what we humans can experience, spanning a vast spectrum of qualia and timescales – all sharing a feeling of having free will.”</p>
+    <p class="zh">如果人工意识是可能的，那么 AI 可能拥有的体验空间，很可能比人类能体验的大得多，横跨极广的感受质与时间尺度——而它们都共享一种「拥有自由意志」的感觉。</p>
+    <span class="pg">Ch 8</span>
+  </div>
+</section>
+
+<section class="chapter" id="epi">
+  <div class="ch-head"><span class="ch-num">后 记</span><span class="ch-page">p. 316 – 336</span></div>
+  <p class="ch-en">Epilogue: The Tale of the FLI Team</p>
+  <p class="ch-zh">后记：未来生命研究所团队风云传</p>
+  <p class="ch-lead">和序言形成一对镜像：序言讲「如果只有一个小团队抢先造出超级智能会怎样」，后记讲<b>现实里那个真实的小团队在做什么</b>。Tegmark 讲了未来生命研究所怎么把「AI 安全」从一个没人愿意碰的话题，变成主流会议上的固定议程——包括那封后来被反复引用的公开信。<br><br>全书最后的落点是一种态度，他在书里叫 <b>mindful optimism</b>（可译作「审慎的乐观」）：不是「应该没事的」，也不是「已经完了」，而是<b>承认我们不知道结局，然后因为不知道，才更值得动手。</b></p>
+  <div class="subs"><span class="sub">Future of Life Institute</span><span class="sub">mainstreaming AI safety</span><span class="sub">mindful optimism</span></div>
+  <div class="q">
+    <p class="zh" style="margin:0;">后记里值得学的是它的<b>方法论</b>：面对一个巨大而遥远的风险，一个小组能做的不是「解决问题」，而是<b>把它变成一件别人愿意讨论的事</b>。这可能是整本书里最可复制的一段经验。</p>
+  </div>
+</section>
+
+<h2 class="sec" id="futures">第 五 章 · 十 二 种 未 来 · 中 英 对 照</h2>
+<p style="font-size:14.5px;color:var(--muted);margin:0 0 14px;">这是全书最有传播力的一节。英文原名很好用——你在英文语境里几乎一定会遇到它们。</p>
+<table class="tb">
+  <tr><th>English</th><th>中文</th></tr>
+  <tr><td class="en">Libertarian Utopia</td><td class="zh">自由意志乌托邦</td></tr>
+  <tr><td class="en">Benevolent Dictator</td><td class="zh">仁慈的独裁者</td></tr>
+  <tr><td class="en">Egalitarian Utopia</td><td class="zh">平等主义乌托邦</td></tr>
+  <tr><td class="en">Gatekeeper</td><td class="zh">看门人</td></tr>
+  <tr><td class="en">Protector God</td><td class="zh">保护神</td></tr>
+  <tr><td class="en">Enslaved God</td><td class="zh">被奴役的神</td></tr>
+  <tr><td class="en">Conquerors</td><td class="zh">征服者</td></tr>
+  <tr><td class="en">Descendants</td><td class="zh">后代</td></tr>
+  <tr><td class="en">Zookeeper</td><td class="zh">动物园管理员</td></tr>
+  <tr><td class="en">1984</td><td class="zh">1984</td></tr>
+  <tr><td class="en">Reversion</td><td class="zh">回退</td></tr>
+  <tr><td class="en">Self-Destruction</td><td class="zh">自我毁灭</td></tr>
+</table>
+
+<h2 class="sec">按 页 码 分 布 · 阅 读 节 奏</h2>
+<table class="tb">
+  <tr><th>部分</th><th>起始页</th><th>篇幅</th></tr>
+  <tr><td class="en">Prelude: The Tale of the Omega Team</td><td>3</td><td>约 19 页</td></tr>
+  <tr><td class="en">Ch 1 Welcome to the Most Important Conversation…</td><td>22</td><td>约 27 页</td></tr>
+  <tr><td class="en">Ch 2 Matter Turns Intelligent</td><td>49</td><td>约 33 页</td></tr>
+  <tr><td class="en">Ch 3 The Near Future</td><td>82</td><td>约 52 页</td></tr>
+  <tr><td class="en">Ch 4 Intelligence Explosion?</td><td>134</td><td>约 27 页</td></tr>
+  <tr><td class="en">Ch 5 Aftermath: The Next 10,000 Years</td><td>161</td><td>约 42 页</td></tr>
+  <tr><td class="en">Ch 6 Our Cosmic Endowment</td><td>203</td><td>约 46 页</td></tr>
+  <tr><td class="en">Ch 7 Goals</td><td>249</td><td>约 32 页</td></tr>
+  <tr><td class="en">Ch 8 Consciousness</td><td>281</td><td>约 35 页</td></tr>
+  <tr><td class="en">Epilogue: The Tale of the FLI Team</td><td>316</td><td>约 21 页</td></tr>
+</table>
+<p style="font-size:13.5px;color:var(--muted);margin:12px 0 0;">想省时间：<b>序言 + 第 1、5、7 章</b>就能拿到这本书九成的冲击力。第 6、8 章是给愿意慢下来的人准备的。</p>
+
+<div class="foot">
+  <p><b>关于本页</b>：内容依据 Max Tegmark《Life 3.0: Being Human in the Age of Artificial Intelligence》（Alfred A. Knopf, 2017）的公开书目信息、章节结构与公开摘录整理；中文释义与导读为个人整理，非官方译本。引文为短篇摘录，用于对照阅读与评论，版权归原作者及出版方所有。中译本信息以浙江教育出版社 2018 年版为准。</p>
+  <p><b>阅读建议</b>：本页适合做「第二遍阅读」的对照表——先把原著读一遍，卡住时回来查术语；或者读英文版时把这一页放在旁边。真正读懂这本书的地方，还是原书那 364 页。</p>
+</div>
+
+</div>
+
+<button id="top" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('tb');
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  function apply(t) {
+    root.setAttribute('data-theme', t);
+    btn.textContent = (t === 'dark') ? '☀' : '◐';
+    try { localStorage.setItem('l30-theme', t); } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  var saved = null;
+  try { saved = localStorage.getItem('l30-theme'); } catch (e) {}
+  apply(saved || (mq && mq.matches ? 'dark' : 'light'));
+
+  var top = document.getElementById('top');
+  window.addEventListener('scroll', function () {
+    top.classList.toggle('on', window.scrollY > 600);
+  }, { passive: true });
+  top.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
